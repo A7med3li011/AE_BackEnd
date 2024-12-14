@@ -120,13 +120,13 @@ export const getProducts = handleAsync(async (req, res, next) => {
      products = await productModel.find({title:{  $regex: req.query.title, $options: 'i'}}).populate("");
   }else{
 
-    products = await productModel.find().populate("");
-
+    products = await productModel.find(req.query).populate("");
+   
   }
 
 
-
-  res.status(200).json({ message: "success", data: products });
+    // console.log(products.length)
+  res.status(200).json({ message: "success"  ,data: products});
 });
 
 export const getProduct = handleAsync(async (req, res, next) => {
