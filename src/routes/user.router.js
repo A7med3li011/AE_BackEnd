@@ -1,7 +1,6 @@
 import express from "express";
 import {
-  confirmEmail,
-  forgetPassword,
+  
   signin,
   signUp,
   signout,
@@ -27,8 +26,7 @@ userRouters.post(
   auth(["user", "admin"]),
   userImage
 );
-userRouters.post("/confirmeEmail", confirmEmail);
-userRouters.post("/forgetPassword", forgetPassword);
+
 userRouters.get("/", auth(["user", "admin"]),getUser);
 
 export default userRouters;

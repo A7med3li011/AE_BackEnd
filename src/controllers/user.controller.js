@@ -67,8 +67,7 @@ export const signout = handleAsync(async (req, res, next) => {
     next(new AppError("user not found or already logout", 400));
   }
 });
-export const confirmEmail = handleAsync((req, res, next) => {});
-export const forgetPassword = handleAsync((req, res, next) => {});
+
 
 export const userImage = handleAsync(async (req, res, next) => {
   const user = await userModel.findOne({ _id: req.user._id });
@@ -100,7 +99,7 @@ export const userImage = handleAsync(async (req, res, next) => {
 
 export const getUser = handleAsync(async(req, res, next) => {
 
-    const user = await userModel.findOne({ _id: req.user._id }).select("image");
+    const user = await userModel.findOne({ _id: req.user._id }).select("-password");
 
           if (!user) return next(new AppError("user not found ", 404));
 
